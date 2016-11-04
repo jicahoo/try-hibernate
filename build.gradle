@@ -16,3 +16,11 @@ dependencies {
     testCompile 'junit:junit:4.12'
     testCompile group: 'org.hsqldb', name: 'hsqldb', version: '2.3.4'
 }
+
+
+task cleanMockData(type: Delete) {
+    delete 'hsqltestdata'
+}
+
+clean.dependsOn cleanMockData
+
