@@ -1,2 +1,5 @@
 # try-hibernate
-A simple project you can use to try features of Hibernate
+Try features of Hibernate without install database.
+
+# Database
+* Use HyerpSql (hsql): http://hsqldb.org/
