@@ -4,3 +4,6 @@ hsqltestdata
 # Ignore folder of intelliJ
 .idea
 out
+
+# Gralde
+build
