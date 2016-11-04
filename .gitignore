@@ -1,0 +1,6 @@
+# Ignore hsql files for test
+hsqltestdata
+
+# Ignore folder of intelliJ
+.idea
+out

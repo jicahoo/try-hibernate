@@ -1,0 +1,18 @@
+apply plugin: 'java'
+
+
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    hibernateVersion = "4.3.5.Final"
+}
+
+dependencies {
+    compile group: 'org.hibernate', name: 'hibernate-core', version: hibernateVersion
+    compile group: 'org.hsqldb', name: 'hsqldb', version: '2.3.4'
+    testCompile 'junit:junit:4.12'
+    testCompile group: 'org.hsqldb', name: 'hsqldb', version: '2.3.4'
+}
