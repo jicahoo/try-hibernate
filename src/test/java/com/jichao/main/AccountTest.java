@@ -50,7 +50,7 @@ public class AccountTest {
     }
 
     @Test
-    public void queryId() {
+    public void queryIdAsString() {
         SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
         Session session = null;
         Transaction tx = null;
@@ -74,5 +74,33 @@ public class AccountTest {
             tx.rollback();
         }
     }
+
+
+    public void testResultMapTransformer() {
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = null;
+        Transaction tx = null;
+        try {
+            session = sessionFactory.openSession();
+            tx = session.beginTransaction();
+            Account account = new Account();
+            account.setName("First");
+            account.setId("account_2");
+            session.persist(account);
+            session.flush();
+            Query query = session.createQuery("select account.id from Account account");
+            List accounts = query.list();
+            System.err.println(accounts.size());
+            assertTrue(accounts.contains("account_2"));
+        } catch (Exception e) {
+            e.printStackTrace();
+            tx.rollback();
+        } finally {
+            session.close();
+            tx.rollback();
+        }
+    }
+
+
 
 }

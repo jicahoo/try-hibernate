@@ -26,5 +26,8 @@
 
         <!-- Mapping class -->
         <mapping class="com.jichao.entity.Account"></mapping>
+        <mapping class="com.jichao.entity.FileSystemBean"></mapping>
+        <mapping class="com.jichao.entity.StorageResourceBean"></mapping>
+
     </session-factory>
 </hibernate-configuration>
