@@ -24,10 +24,15 @@
 
         <property name="hibernate.show_sql">true</property>
 
+        <property name="hibernate.default_batch_fetch_size">5</property>
         <!-- Mapping class -->
         <mapping class="com.jichao.entity.Account"></mapping>
         <mapping class="com.jichao.entity.FileSystemBean"></mapping>
         <mapping class="com.jichao.entity.StorageResourceBean"></mapping>
+        <mapping class="com.jichao.entity.PoolBean"></mapping>
+        <mapping class="com.jichao.entity.CifsShareBean"></mapping>
+
+
 
     </session-factory>
 </hibernate-configuration>
