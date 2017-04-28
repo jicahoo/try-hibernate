@@ -4,9 +4,15 @@ Try features of Hibernate without install database.
 # TODO
 * Add CI. Or the project is rubbish.
 * Refactor: for every test (java), one database, data, one hibernate config, one domain model. One session.
-* Stick to HSQL and learn HSQL. It is better choice for this project. Command line: http://hsqldb.org/doc/2.0/util-guide/sqltool-chapt.html#N1067A
-* Learn HSQL: http://stackoverflow.com/questions/591518/how-to-see-all-the-tables-in-an-hsqldb-database/19646240#19646240
+* Stick to HSQL and learn HSQL. It is better choice for this project. More details check HSQL chapter.
 * Easy to prepare table, data, bean.
+
+# HSQL
+Reference:
+
+* http://stackoverflow.com/questions/4990864/best-sql-browser-for-hsqldb
+* http://stackoverflow.com/questions/591518/how-to-see-all-the-tables-in-an-hsqldb-database/19646240#19646240
+* http://hsqldb.org/doc/2.0/util-guide/sqltool-chapt.html#N1067A
 
 # Database
 * Use HyerpSql (hsql): http://hsqldb.org/  (Reason: Hibernate support it.)
