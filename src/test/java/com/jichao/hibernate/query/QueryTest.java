@@ -606,6 +606,7 @@ public class QueryTest {
         }
 
     }
+
     @Test
     public void testEvict() {
         List<Object> objects = new ArrayList<>();

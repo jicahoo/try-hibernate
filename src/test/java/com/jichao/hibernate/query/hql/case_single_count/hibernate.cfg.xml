@@ -1,0 +1,33 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- Create table if not exists -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <!-- The JDBC driver of your database -->
+
+        <property name="hibernate.connection.driver_class">org.hsqldb.jdbcDriver</property>
+        <!-- Indicate the database to generate suitable SQL -->
+
+        <property name="hibernate.dialect">org.hibernate.dialect.HSQLDialect</property>
+
+        <!-- The JDBC URL to the database instance -->
+        <property name="hibernate.connection.url">jdbc:hsqldb:file:mock_data/com/jichao/hibernate/query/hql/case_single_count/mockdata</property>
+
+        <!-- The database username -->
+        <property name="hibernate.connection.username">sa</property>
+
+        <!-- The database password -->
+        <property name="hibernate.connection.password"> </property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.default_batch_fetch_size">5</property>
+
+        <!-- Mapping class -->
+        <mapping class="com.jichao.hibernate.query.hql.case_single_count.model.FileSystem"></mapping>
+        <mapping class="com.jichao.hibernate.query.hql.case_single_count.model.Pool"></mapping>
+        <mapping class="com.jichao.hibernate.query.hql.case_single_count.model.StorageResource"></mapping>
+
+
+    </session-factory>
+</hibernate-configuration>

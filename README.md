@@ -1,6 +1,9 @@
 # try-hibernate
 Try features of Hibernate without install database.
 
+# Cases
+* HQL multiple count: 
+
 # TODO
 * Add CI. Or the project is rubbish.
 * Refactor: for every test (java), one database, data, one hibernate config, one domain model. One session.
@@ -16,6 +19,7 @@ Reference:
 
 # Database
 * Use HyerpSql (hsql): http://hsqldb.org/  (Reason: Hibernate support it.)
+
 
 # Usage:
 * Check the Unit Test to see the demo of how to use Hibernate.
