@@ -13,7 +13,7 @@
         <property name="hibernate.dialect">org.hibernate.dialect.HSQLDialect</property>
 
         <!-- The JDBC URL to the database instance -->
-        <property name="hibernate.connection.url">jdbc:hsqldb:file:mock_data/com/jichao/hibernate/query/hql/case_single_count/mockdata</property>
+        <property name="hibernate.connection.url">jdbc:hsqldb:file:mock_data/com/jichao/hibernate/query/hql/case_multiple_count/mockdata</property>
 
         <!-- The database username -->
         <property name="hibernate.connection.username">sa</property>
@@ -24,9 +24,8 @@
         <property name="hibernate.default_batch_fetch_size">5</property>
 
         <!-- Mapping class -->
-        <mapping class="com.jichao.hibernate.query.hql.case_single_count.model.FileSystem"></mapping>
-        <mapping class="com.jichao.hibernate.query.hql.case_single_count.model.Pool"></mapping>
-        <mapping class="com.jichao.hibernate.query.hql.case_single_count.model.StorageResource"></mapping>
+        <mapping class="com.jichao.hibernate.query.hql.case_multiple_count.model.Host"></mapping>
+        <mapping class="com.jichao.hibernate.query.hql.case_multiple_count.model.HostInitiator"></mapping>
 
 
     </session-factory>

@@ -3,27 +3,24 @@ package com.jichao.hibernate.query.hql.case_single_count;
 import com.jichao.hibernate.query.hql.case_single_count.model.FileSystem;
 import com.jichao.hibernate.query.hql.case_single_count.model.Pool;
 import com.jichao.hibernate.query.hql.case_single_count.model.StorageResource;
-import org.apache.commons.io.FileSystemUtils;
-import org.apache.commons.io.FileUtils;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.transform.Transformers;
-import org.junit.After;
-import org.junit.AfterClass;
+
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
+import static org.junit.Assert.fail;
+
 
 /**
  * Created by zhangj52 on 4/28/2017.
@@ -36,17 +33,7 @@ public class SingleCount {
     @Before
     public void before() throws IOException {
         String dataPath = "mock_data/com/jichao/hibernate/query/hql/case_single_count";
-        File curDir = new File(dataPath);
-        File[] filesList = curDir.listFiles();
 
-        /*
-        Arrays.stream(filesList).forEach(f -> {
-            try {
-                FileUtils.forceDelete(f);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });**/
         Files.list(Paths.get(dataPath)).forEach(f -> {
             try {
                 Files.delete(f);
@@ -109,6 +96,7 @@ public class SingleCount {
         } catch (Exception e) {
             e.printStackTrace();
             tx.rollback();
+            fail("Failed to query");
         } finally {
             session.close();
         }
@@ -131,6 +119,7 @@ public class SingleCount {
             }
         } catch (Exception e) {
             e.printStackTrace();
+            fail("Failed to query.");
         } finally {
             session.close();
         }
