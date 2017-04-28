@@ -1,5 +1,6 @@
 package com.jichao.hibernate.query;
 
+import com.jichao.entity.FileEventSettingBean;
 import com.jichao.entity.FileSystemBean;
 import com.jichao.entity.StorageResourceBean;
 import org.hibernate.*;
@@ -134,6 +135,10 @@ public class CriteriaTest {
             session.close();
         }
     }
+
+
+
+
 
 
 }

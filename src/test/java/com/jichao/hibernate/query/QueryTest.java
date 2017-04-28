@@ -324,6 +324,52 @@ public class QueryTest {
     }
 
 
+    /**
+     * ALIAS_TO_ENTITY_MAP
+     */
+    @Test
+    public void testAliasToEntityMap (){
+        /*
+
+        List<Object> objects = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            FileSystemBean fileSystemBean = new FileSystemBean();
+            fileSystemBean.setName("First" + i);
+            fileSystemBean.setId("fs_" + i);
+            Address address = new Address("street", "city", "state", "zipcode");
+            fileSystemBean.setAddress(address);
+            objects.add(fileSystemBean);
+        }
+        {
+            int dupIdx = 9;
+            FileSystemBean fileSystemBean = new FileSystemBean();
+            fileSystemBean.setName("First" + dupIdx);
+            fileSystemBean.setId("fs_" + 10);
+            Address address = new Address("street", "city", "state", "zipcode");
+            fileSystemBean.setAddress(address);
+            objects.add(fileSystemBean);
+        }
+
+
+        prepareData(objects);
+        */
+
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = sessionFactory.openSession();
+        Query query = session.createQuery("from FileSystemBean fs");
+        List objs = query.list();
+        try {
+            for (Object obj : objs) {
+                FileSystemBean fileSystemBean = (FileSystemBean) obj;
+                String name = fileSystemBean.getName();
+                System.err.println(name);
+            }
+        } catch (Exception e) {
+            session.close();
+        }
+    }
+
+
     @Test
     public void testCollectionOnStatlessSessionNetgativeCase() {
         prepareData();
@@ -397,6 +443,7 @@ public class QueryTest {
 
     @Test
     public void testEmbeddable() {
+
         List<Object> objects = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             FileSystemBean fileSystemBean = new FileSystemBean();
@@ -483,6 +530,83 @@ public class QueryTest {
     }
 
     @Test
+    public void testCount() {
+
+        SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+        Session session = null;
+        Transaction tx = null;
+        try {
+            session = sessionFactory.openSession();
+            tx = session.beginTransaction();
+
+            //Create 10 file system.
+
+            for (int i = 0; i < 10; i++) {
+                FileSystemBean fileSystemBean = new FileSystemBean();
+                fileSystemBean.setName("First" + i);
+                fileSystemBean.setId("fs_" + i);
+                session.persist(fileSystemBean);
+                session.flush();
+            }
+
+            //Create Pool
+            List<PoolBean> pools = new ArrayList<>();
+            for (int i = 0; i < 10; i++) {
+                PoolBean poolBean = new PoolBean();
+                pools.add(poolBean);
+                poolBean.setName("StorageResource_Name_" + i);
+                poolBean.setId("pool_" + i);
+                session.persist(poolBean);
+                session.flush();
+            }
+
+            //Create 10 storageResource
+            for (int i = 0; i < 10; i++) {
+                StorageResourceBean storageResourceBean = new StorageResourceBean();
+                storageResourceBean.setName("StorageResource_Name_" + i);
+                //query filesystem
+                FileSystemBean fileSystemBean = (FileSystemBean) session.get(FileSystemBean.class, "fs_" + i);
+                storageResourceBean.setFileSystemBean(fileSystemBean);
+                storageResourceBean.setId("sr_" + i);
+                if (i == 0) {
+                    storageResourceBean.setPools(pools);
+                }
+                session.persist(storageResourceBean);
+                session.flush();
+            }
+
+
+            tx.commit();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            tx.rollback();
+        } finally {
+            session.close();
+        }
+
+        //Query:
+        try {
+            session = sessionFactory.openSession();
+            //String hql = "select sr.id as id, cast((count(pools_1)) as int) as poolcount from StorageResourceBean sr " +
+             //       "left join sr.pools pools_1 group by sr.id order by id";
+            //String hql = "select count(*) from StorageResourceBean sr";
+            String hql = "select sr.id as id, cast(count(poolalias) as int) as test from StorageResourceBean sr left outer join sr.pools as poolalias where id in ('sr_1', 'sr_2') group by sr.id";
+
+
+            Query query = session.createQuery(hql);
+            query.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
+            List objs = query.list();
+            for (Object obj : objs) {
+                System.out.println(obj);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.close();
+        }
+
+    }
+    @Test
     public void testEvict() {
         List<Object> objects = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
@@ -529,5 +653,7 @@ public class QueryTest {
             session.close();
         }
     }
+
+
 
 }

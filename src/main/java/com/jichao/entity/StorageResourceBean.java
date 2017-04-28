@@ -5,6 +5,7 @@ import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Persister;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -65,7 +66,7 @@ public class StorageResourceBean {
     @Persister(impl= CustomCollectionPersister.class)
     @JoinTable(name="storageResource_pools", joinColumns= {@JoinColumn(name="id")},
             inverseJoinColumns={@JoinColumn(name="elementvalue")})
-    protected List<PoolBean> pools;
+    protected List<PoolBean> pools = new ArrayList<>();
 
     public List<PoolBean> getPools() {
         return pools;

@@ -30,6 +30,7 @@
         <mapping class="com.jichao.entity.FileSystemBean"></mapping>
         <mapping class="com.jichao.entity.StorageResourceBean"></mapping>
         <mapping class="com.jichao.entity.PoolBean"></mapping>
+        <mapping class="com.jichao.entity.FileEventSettingBean"></mapping>
         <mapping class="com.jichao.entity.CifsShareBean"></mapping>
 
 

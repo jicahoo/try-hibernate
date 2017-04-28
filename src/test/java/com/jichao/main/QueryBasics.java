@@ -55,6 +55,11 @@ public class QueryBasics {
         session.close();
     }
 
+    @Test
+    public void testEvict() {
+
+    }
+
 
     @AfterClass
     public static void cleanData() {

@@ -1,6 +1,10 @@
 package com.jichao.entity;
 
+import org.hibernate.annotations.*;
+
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -19,8 +23,11 @@ public class FileSystemBean {
         this.id = id;
     }
 
-    @Id
+
+
+
     private String id;
+
 
     public String getName() {
         return name;
@@ -31,8 +38,10 @@ public class FileSystemBean {
     }
 
     @Column(name="name")
+    @Id
     private String name;
 
+    @Transient
     public List<CifsShareBean> getCifsShares() {
         return cifsShares;
     }
@@ -41,8 +50,9 @@ public class FileSystemBean {
         this.cifsShares = cifsShares;
     }
 
-    @OneToMany(fetch=FetchType.LAZY)
-    @JoinColumn(name="filesystem")
+    //@OneToMany(fetch=FetchType.LAZY)
+    //@JoinColumn(name="filesystem")
+    @Transient
     private List<CifsShareBean> cifsShares;
 
 
@@ -59,6 +69,7 @@ public class FileSystemBean {
     private Address address;
 
 
+    @Transient
     public Set<Address> getAddressList() {
         return addressList;
     }
@@ -67,7 +78,7 @@ public class FileSystemBean {
         this.addressList = addressList;
     }
 
-    @ElementCollection
+    @Transient
     private Set<Address> addressList;
 
 
