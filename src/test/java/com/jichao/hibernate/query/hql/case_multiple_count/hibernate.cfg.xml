@@ -3,17 +3,16 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <!-- Create table if not exists -->
-        <property name="hibernate.hbm2ddl.auto">update</property>
         <!-- The JDBC driver of your database -->
-
+        <!--<property name="hibernate.hbm2ddl.auto">validate</property>-->
         <property name="hibernate.connection.driver_class">org.hsqldb.jdbcDriver</property>
-        <!-- Indicate the database to generate suitable SQL -->
 
+        <!-- Indicate the database to generate suitable SQL -->
         <property name="hibernate.dialect">org.hibernate.dialect.HSQLDialect</property>
 
         <!-- The JDBC URL to the database instance -->
-        <property name="hibernate.connection.url">jdbc:hsqldb:file:mock_data/com/jichao/hibernate/query/hql/case_multiple_count/mockdata</property>
+        <!--<property name="hibernate.connection.url">jdbc:hsqldb:file:${user.home}/db/personal</property>-->
+        <property name="hibernate.connection.url">jdbc:hsqldb:mem:memdbid</property>
 
         <!-- The database username -->
         <property name="hibernate.connection.username">sa</property>

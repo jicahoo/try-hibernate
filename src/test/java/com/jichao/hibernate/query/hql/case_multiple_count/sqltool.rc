@@ -1,5 +1,6 @@
 # A personal, local, persistent database.
-urlid mem
+urlid personal
+#url jdbc:hsqldb:file:${user.home}/db/personal
 url jdbc:hsqldb:mem:memdbid
 username sa
 password

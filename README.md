@@ -10,6 +10,10 @@ Try features of Hibernate without install database.
 * Stick to HSQL and learn HSQL. It is better choice for this project. More details check HSQL chapter.
 * Easy to prepare table, data, bean.
 
+# Some tips when you run into some problems
+
+* Hibernate config seems not update. Try to run gradle processTestResources to update the hibernate.cfg.xml.
+  
 # HSQL
 Reference:
 

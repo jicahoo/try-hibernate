@@ -10,7 +10,7 @@ import java.util.List;
  * Created by zhangj52 on 4/28/2017.
  */
 @Entity
-@Table(name = "_host")
+@Table(name = "host")
 public class Host {
     public String getId() {
         return id;
@@ -22,7 +22,7 @@ public class Host {
 
 
     @Id
-    @Column(name = "_id")
+    @Column(name = "id")
     private String id;
 
 
@@ -34,18 +34,18 @@ public class Host {
         this.name = name;
     }
 
-    @Column(name = "_name")
+    @Column(name = "name")
     private String name;
 
 
     @OneToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "_host_iscsiHostInitiators", joinColumns = {@JoinColumn(name = "_id")}, inverseJoinColumns = {@JoinColumn(name = "_elementvalue")})
+    @JoinTable(name = "host_iscsiHostInitiators", joinColumns = {@JoinColumn(name = "id")}, inverseJoinColumns = {@JoinColumn(name = "elementvalue")})
     @Cascade({CascadeType.ALL})
     protected List<HostInitiator> iscsiHostInitiators;
 
 
     @OneToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "_host_fcHostInitiators", joinColumns = {@JoinColumn(name = "_id")}, inverseJoinColumns = {@JoinColumn(name = "_elementvalue")})
+    @JoinTable(name = "host_fcHostInitiators", joinColumns = {@JoinColumn(name = "id")}, inverseJoinColumns = {@JoinColumn(name = "elementvalue")})
     @Cascade({CascadeType.ALL})
     protected List<HostInitiator> fcHostInitiators;
 
