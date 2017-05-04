@@ -37,6 +37,8 @@ public class Host {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "type")
+    private Integer type;
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "host_iscsiHostInitiators", joinColumns = {@JoinColumn(name = "id")}, inverseJoinColumns = {@JoinColumn(name = "elementvalue")})

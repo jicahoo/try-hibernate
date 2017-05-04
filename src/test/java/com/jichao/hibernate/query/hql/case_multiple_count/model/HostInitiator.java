@@ -24,7 +24,6 @@ public class HostInitiator {
     @Column(name = "id")
     private String id;
 
-
     public String getName() {
         return name;
     }
