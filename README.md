@@ -1,5 +1,12 @@
 # try-hibernate
+
+## Goal
 Try features of Hibernate without install database.
+
+# Usage:
+* Step 1: Clone the project
+* Step 2: Load to your favorite Java IDE with Gralde support.
+* Step 3. Check unit test of this Project. One ut case is just one complete Hibernate usage example.
 
 # Cases
 * HQL multiple count: 
