@@ -18,6 +18,7 @@ Try features of Hibernate without install database.
 * Easy to prepare table, data, bean.
 
 # Some tips when you run into some problems
+* Every test method tagged with annotation @Test has its own in-memory database, hibernate config.
 
 * Hibernate config seems not update. Try to run gradle processTestResources to update the hibernate.cfg.xml.
   
