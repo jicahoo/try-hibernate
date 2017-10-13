@@ -10,9 +10,11 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.transform.Transformers;
 
+import org.hsqldb.cmdline.SqlTool;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -27,25 +29,25 @@ import static org.junit.Assert.fail;
  */
 public class SingleCount {
 
-    private String hibernateConfigXml = "com/jichao/hibernate/query/hql/case_single_count/hibernate.cfg.xml";
-
-
-    @Before
-    public void before() throws IOException {
-        String dataPath = "mock_data/com/jichao/hibernate/query/hql/case_single_count";
-
-        Files.list(Paths.get(dataPath)).forEach(f -> {
-            try {
-                Files.delete(f);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-
-    }
 
     @Test
-    public void testCount() {
+    public void testCount() throws IOException, SqlTool.SqlToolException {
+        String relativePath = "src/test/java/com/jichao/hibernate/query/hql/case_single_count";
+        String path = relativePath.replace("/", File.separator);
+        File cwd = new File(".");
+        String cwdPath = cwd.getCanonicalPath();
+        String caseBasePath = cwdPath + File.separator + path;
+        String sqlFileName = "TestCount.sql";
+        String urlId = "personal";
+        String sqlTooRcFile = caseBasePath + File.separator +"sqltool.rc";
+        String sqlFile = caseBasePath + File.separator + "sql" + File.separator + sqlFileName;
+        //java org.hsqldb.cmdline.SqlTool [--opt[=optval]...] urlid [file1.sql...]
+        String[] sqlToolOptions = new String[]{"--rcFile", sqlTooRcFile, urlId, sqlFile};
+
+        SqlTool.objectMain(sqlToolOptions);
+
+        //Resource path
+        String hibernateConfigXml = "/com/jichao/hibernate/query/hql/case_single_count/hibernate.cfg.xml";
 
         SessionFactory sessionFactory = new Configuration().configure(hibernateConfigXml).buildSessionFactory();
         Session session = null;

@@ -52,4 +52,11 @@ public class Host {
     protected List<HostInitiator> fcHostInitiators;
 
 
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
 }

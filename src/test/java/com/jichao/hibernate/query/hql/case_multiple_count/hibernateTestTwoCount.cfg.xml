@@ -12,7 +12,7 @@
 
         <!-- The JDBC URL to the database instance -->
         <!--<property name="hibernate.connection.url">jdbc:hsqldb:file:${user.home}/db/personal</property>-->
-        <property name="hibernate.connection.url">jdbc:hsqldb:mem:memdbid</property>
+        <property name="hibernate.connection.url">jdbc:hsqldb:mem:TestTwoCount</property>
 
         <!-- The database username -->
         <property name="hibernate.connection.username">sa</property>
@@ -23,8 +23,8 @@
         <property name="hibernate.default_batch_fetch_size">5</property>
 
         <!-- Mapping class -->
-        <mapping class="com.jichao.hibernate.query.hql.case_multiple_count.model.Host"/>
-        <mapping class="com.jichao.hibernate.query.hql.case_multiple_count.model.HostInitiator"/>
+        <mapping class="com.jichao.hibernate.query.hql.case_multiple_count.model.Host"></mapping>
+        <mapping class="com.jichao.hibernate.query.hql.case_multiple_count.model.HostInitiator"></mapping>
 
 
     </session-factory>

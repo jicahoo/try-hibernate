@@ -1,0 +1,6 @@
+# A personal, local, persistent database.
+urlid personal
+#url jdbc:hsqldb:file:${user.home}/db/personal
+url jdbc:hsqldb:mem:TestTwoCount
+username sa
+password

@@ -3,6 +3,7 @@ hsqltestdata
 
 # Ignore folder of intelliJ
 .idea
+try-hibernate.iml
 out
 
 # Gralde

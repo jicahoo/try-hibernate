@@ -1,5 +1,6 @@
 package com.jichao.hibernate.query.hql.case_multiple_count;
 
+import com.jichao.hibernate.query.hql.case_multiple_count.model.Host;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -41,7 +42,7 @@ public class MultipleCount {
 
         String sqlFileName = "testTwoCount.sql";
         String urlId = "personal";
-        String sqlTooRcFile = caseBasePath + File.separator +"sqltool.rc";
+        String sqlTooRcFile = caseBasePath + File.separator +"sqltoolTestTwoCount.rc";
         String sqlFile = caseBasePath + File.separator + "sql" + File.separator + sqlFileName;
         //java org.hsqldb.cmdline.SqlTool [--opt[=optval]...] urlid [file1.sql...]
         String[] sqlToolOptions = new String[]{"--rcFile", sqlTooRcFile, urlId, sqlFile};
@@ -49,7 +50,7 @@ public class MultipleCount {
         SqlTool.objectMain(sqlToolOptions);
 
 
-        String hibernateConfigXml = "com/jichao/hibernate/query/hql/case_multiple_count/hibernate.cfg.xml";
+        String hibernateConfigXml = "com/jichao/hibernate/query/hql/case_multiple_count/hibernateTestTwoCount.cfg.xml";
 
         SessionFactory sessionFactory = new Configuration().configure(hibernateConfigXml).buildSessionFactory();
         Session session = null;
@@ -142,8 +143,11 @@ public class MultipleCount {
         String relativePath = "src/test/java/com/jichao/hibernate/query/hql/case_multiple_count";
         String path = relativePath.replace("/", File.separator);
         File cwd = new File(".");
+        String cwdPath = cwd.getCanonicalPath();
+        System.err.println(cwdPath);
         String caseBasePath = cwd.getCanonicalPath() + File.separator + path;
         System.out.println(caseBasePath);
+        System.out.println("CASE BASE PATH.");
 
         String sqlFileName = "testComplexCase.sql";
         String urlId = "personal";
@@ -154,14 +158,17 @@ public class MultipleCount {
 
         SqlTool.objectMain(sqlToolOptions);
 
-        String hibernateConfigXml = "com/jichao/hibernate/query/hql/case_multiple_count/hibernate.cfg.xml";
-
+        //Resource path
+        String hibernateConfigXml = "/com/jichao/hibernate/query/hql/case_multiple_count/hibernate.cfg.xml";
+        System.out.println("Before GET SessionFactory.");
         SessionFactory sessionFactory = new Configuration().configure(hibernateConfigXml).buildSessionFactory();
         Session session = null;
+        System.out.println("Get SessionFactory");
 
         //Query:
         try {
             session = sessionFactory.openSession();
+
 
             String hql = "SELECT host.id AS host_id, host.name AS host_name, " +
                     "CASE WHEN host.type = 2 THEN (count(DISTINCT iscsi.id)+count(DISTINCT fc.id)) ELSE null END AS total_count " +

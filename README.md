@@ -42,3 +42,6 @@ Reference:
 
 # Issues
 * The cases are not independent. All of them are using the same database. So Only run one test case every time and run cleanMockData before.
+
+# Helpful links
+* Why test hang? https://stackoverflow.com/questions/14001558/maven-hangs-while-running-test-case-eclipselink-hsqldb
