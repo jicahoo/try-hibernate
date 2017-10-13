@@ -1,5 +1,8 @@
 # try-hibernate
 
+## CI Status
+* [![Build Status](https://travis-ci.org/jicahoo/try-hibernate.svg?branch=master)](https://travis-ci.org/jicahoo/try-hibernate)
+
 ## Goal
 Try features of Hibernate without install database.
 
@@ -9,7 +12,8 @@ Try features of Hibernate without install database.
 * Step 3. Check unit test of this Project. One ut case is just one complete Hibernate usage example.
 
 # Cases
-* HQL multiple count: 
+* HQL multiple count:
+
 
 # TODO
 * Add CI. Or the project is rubbish.
