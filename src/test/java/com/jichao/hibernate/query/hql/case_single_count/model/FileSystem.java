@@ -26,10 +26,8 @@ public class FileSystem {
         this.id = id;
     }
 
-
     @Id
     private String id;
-
 
     public String getName() {
         return name;
@@ -40,6 +38,5 @@ public class FileSystem {
     }
 
     @Column(name = "name")
-    @Type(type="abc", parameters = {@Parameter(name="a",value="hello")})
     private String name;
 }
