@@ -2,8 +2,13 @@ package com.jichao.hibernate.query.hql.case_single_count.model;
 
 import com.jichao.entity.Address;
 import com.jichao.entity.CifsShareBean;
+import org.hibernate.annotations.Parameter;
+import org.hibernate.annotations.Type;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.List;
 import java.util.Set;
 
@@ -35,6 +40,6 @@ public class FileSystem {
     }
 
     @Column(name = "name")
+    @Type(type="abc", parameters = {@Parameter(name="a",value="hello")})
     private String name;
-
 }

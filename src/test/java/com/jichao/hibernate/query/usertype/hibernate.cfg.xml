@@ -1,0 +1,29 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- The JDBC driver of your database -->
+        <!--<property name="hibernate.hbm2ddl.auto">validate</property>-->
+        <property name="hibernate.connection.driver_class">org.hsqldb.jdbcDriver</property>
+
+        <!-- Indicate the database to generate suitable SQL -->
+        <property name="hibernate.dialect">org.hibernate.dialect.HSQLDialect</property>
+
+        <!-- The JDBC URL to the database instance -->
+        <!--<property name="hibernate.connection.url">jdbc:hsqldb:file:${user.home}/db/personal</property>-->
+        <property name="hibernate.connection.url">jdbc:hsqldb:mem:usertype</property>
+
+        <!-- The database username -->
+        <property name="hibernate.connection.username">sa</property>
+
+        <!-- The database password -->
+        <property name="hibernate.connection.password"> </property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.default_batch_fetch_size">5</property>
+
+        <!-- Mapping class -->
+        <mapping class="com.jichao.hibernate.query.usertype.model.FileSystem"/>
+
+    </session-factory>
+</hibernate-configuration>
