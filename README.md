@@ -6,6 +6,9 @@
 ## Goal
 Try features of Hibernate without install database.
 
+## Hibernate version
+* 4.3.5.Final
+
 # Usage:
 * Step 1: Clone the project
 * Step 2: Load to your favorite Java IDE with Gralde support.
